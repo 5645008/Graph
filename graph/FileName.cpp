@@ -7,6 +7,7 @@
 #define MAX_STACK_SIZE 100
 #define MAX_QUEUE_SIZE 10
 
+
 //방문한 노드
 int node=0;
 
