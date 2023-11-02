@@ -31,11 +31,19 @@ void set_union(int a, int b)
 	if (root1 != root2)
 		parent[root1] = root2;
 }
-
+//간선 및 그래프
 struct Edge
 {
 	int start, end, weight;
 };
+
+typedef struct GraphType
+{
+	int n;
+	struct Edge edges[2 * MAX_VERTICES];
+} GraphType;
+
+
 //힙 정의
 typedef struct {
 	Edge heap[MAX_EDGE];
@@ -80,7 +88,7 @@ Edge delete_min_heap(HeapType* h)
 	child = 2;
 	while (child <= h->heap_size)
 	{
-		if ((child > h->heap_size) &&
+		if ((child < h->heap_size) &&
 			(h->heap[child].weight) > h->heap[child + 1].weight)
 			child++;
 		if (temp.weight < h->heap[child].weight) break;
@@ -92,11 +100,8 @@ Edge delete_min_heap(HeapType* h)
 	return item;
 }
 
-typedef struct GraphType
-{
-	int n;
-	struct Edge edges[2 * MAX_VERTICES];
-} GraphType;
+
+
 // 그래프 초기화 
 void graph_init(GraphType* g)
 {
@@ -148,6 +153,10 @@ void kruskal(GraphType* g)
 			set_union(uset, vset);	        // 두개의 집합을 합친다.
 		}
 		i++;
+		if (edge_accepted == 9) {
+			printf("\n");
+			return;
+		}
 	}
 }
 
@@ -166,7 +175,7 @@ void kruskal2(GraphType* g, HeapType* h)
 	int i = 0;
 	while (edge_accepted < (g->n - 1))	    // 간선의 수 < (n-1)
 	{
-		e = delete_min_heap(h);
+		e = delete_min_heap(h);				//최소히프삭제함수를 이용해서 최소 비용의 간선을 불러옴
 		uset = set_find(e.start);	        // 정점 u의 집합 번호 
 		vset = set_find(e.end);		        // 정점 v의 집합 번호
 		if (uset != vset)                   // 서로 속한 집합이 다르면
@@ -176,12 +185,17 @@ void kruskal2(GraphType* g, HeapType* h)
 			set_union(uset, vset);	        // 두개의 집합을 합친다.
 		}
 		i++;
+		if (edge_accepted == 9) {
+			printf("\n");
+			return;
+		}
 	}
 }
 
 
 int main(void)
 {
+	//그래프 만들기
 	GraphType* g;
 	g = (GraphType*)malloc(sizeof(GraphType));
 	graph_init(g);
@@ -208,7 +222,8 @@ int main(void)
 	insert_edge(g, 9, 10, 10);
 
 	kruskal(g);
-
+	
+	//최소히프용 히프생성
 	HeapType* h = create();
 	init(h);
 	for (int i = 0; i <= g->n; i++) {
@@ -217,6 +232,7 @@ int main(void)
 
 	set_init;
 	kruskal2(g, h);
+
 	free(g);
 	return 0;
 }
