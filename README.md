@@ -1,2 +1,2 @@
-# Graph(실습)
+# Kruskal-MST(과제)
 ![](./image.jpg)
