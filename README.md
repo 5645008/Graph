@@ -1,2 +1,2 @@
-# Prim MST(실습)
+# Prim MST(과제)
 ![](./image.jpg)
