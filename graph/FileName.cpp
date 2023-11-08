@@ -39,7 +39,7 @@ void prim(GraphType* g, int s) {
 
 		if (distance[u] == INF)return;
 		printf("정점 %d 추가\n", u+1);
-		for(v=0; v<g->n; v++)
+		for(v=0; v<g->n; v++) 
 			if(g->weight[u][v] != INF)
 				if (!selected[v] && g->weight[u][v] < distance[v])
 					distance[v] = g->weight[u][v];
