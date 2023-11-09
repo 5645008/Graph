@@ -60,7 +60,7 @@ void shortest_path(GraphType* g, int start)
 		found[i] = FALSE;
 	}
 	found[start] = TRUE;    /* 시작 정점 방문 표시 */
-	distance[start] = 0;
+	distance[start] = 0; 
 	for (i = 0; i < g->n - 1; i++)
 	{
 		print_status(g);
