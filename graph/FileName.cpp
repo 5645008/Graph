@@ -47,15 +47,6 @@ void print_status(GraphType* g) {
 		printf("%d ", found[i]);
 	}
 	printf("\n\n");
-	//MST 출력부분(마지막 1개는 found에서 FALSE인 부분 출력
-	for (int i = 0; i < g->n-1; i++) {
-		printf("%d ", MST[i]+1);
-	}
-	for (int i = 0; i < g->n; i++) {
-		if (found[i] == FALSE) {
-			printf("%d", i + 1);
-		}
-	}
 }
 
 
@@ -98,5 +89,10 @@ int main(void)
 		{INF,INF,INF,16,17,INF,INF,15,10,0}}
 	};
 	shortest_path(&g, 0);
+
+	//MST 출력부분
+	for (int i = 0; i < g.n; i++) {
+		printf("%d ", MST[i] + 1);
+	}
 	return 0;
 }
