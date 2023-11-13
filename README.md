@@ -1,2 +1,2 @@
-# Dijkstra(실습-1번 인접행렬)
-![](./image3.PNG)
+# Dijkstra(과제-2번 연결리스트)
+![](./image.jpg)
