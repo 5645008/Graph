@@ -88,12 +88,5 @@ int main(void)
 		shortway(start-1, end-1);
 		printf("\n");
 	}
-	
-	
-
-
-	
-
-
 	return 0;
 }
